@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Swami Cafe | Fresh Food & Coffee</title>
+
+    <meta name="description"
+          content="Swami Cafe - Fresh coffee, delicious food, snacks and desserts.">
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf4;
+            color: #3b241c;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+
+            background: rgba(62, 39, 35, 0.97);
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 16px 7%;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #f5b85b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f5b85b;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 90vh;
+
+            background:
+                linear-gradient(
+                    rgba(35, 20, 15, 0.65),
+                    rgba(35, 20, 15, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 30px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #f5b85b;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #f5a623;
+            color: #3b241c;
+        }
+
+        .btn-primary:hover {
+            background: #ffc766;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #3b241c;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #b56b35;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 12px;
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
+        .menu-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            margin-bottom: 25px;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #5a3325;
+        }
+
+        .category-title::after {
+            content: "";
+            height: 2px;
+            background: #e3b16d;
+            flex: 1;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+
+            box-shadow: 0 8px 25px rgba(74, 45, 30, 0.1);
+
+            transition: 0.35s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(74, 45, 30, 0.18);
+        }
+
+        .menu-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .menu-card:hover .menu-image img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: #f5a623;
+            color: #3b241c;
+
+            padding: 7px 12px;
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .menu-top h3 {
+            font-size: 20px;
+        }
+
+        .price {
+            color: #b65f2c;
+            font-weight: bold;
+            font-size: 19px;
+            white-space: nowrap;
+        }
+
+        .menu-info p {
+            color: #777;
+            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .order-btn {
+            display: block;
+            text-align: center;
+
+            background: #3e2723;
+            color: white;
+
+            padding: 11px;
+            border-radius: 8px;
+
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #f5a623;
+            color: #3e2723;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            background: #4b2e24;
+            color: white;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .about-content small {
+            color: #f5b85b;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .about-content h2 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            margin: 12px 0 20px;
+        }
+
+        .about-content p {
+            color: #eaded7;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            background: rgba(255,255,255,0.08);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact-box {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            text-align: center;
+            padding: 30px 15px;
+            border-radius: 15px;
+
+            box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-card .icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: #777;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #241512;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer .footer-logo {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        footer .footer-logo span {
+            color: #f5b85b;
+        }
+
+        footer p {
+            color: #cdbfba;
+            margin: 8px;
+        }
+
+        .social {
+            margin-top: 18px;
+        }
+
+        .social a {
+            color: white;
+            font-size: 22px;
+            margin: 0 8px;
+        }
+
+
+        /* =========================
+           WHATSAPP FLOAT
+        ========================== */
+
+        .whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 1000;
+
+            width: 60px;
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: #25d366;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================== */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section {
+                padding: 60px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<nav>
+
+    <a href="#home" class="logo">
+        ☕ Swami<span>Cafe</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Welcome to
+            <span>Swami Cafe</span>
+        </h1>
+
+        <p>
+            Fresh coffee, delicious food and beautiful moments.
+            Your perfect place to relax, eat and enjoy.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#menu" class="btn btn-primary">
+                🍽️ View Menu
+            </a>
+
+            <a href="https://wa.me/919876543210?text=Hello%20Swami%20Cafe%2C%20I%20would%20like%20to%20place%20an%20order."
+               class="btn btn-outline">
+                💬 Order on WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================== -->
+
+<section class="section" id="menu">
+
+    <div class="section-title">
+
+        <small>Our Menu</small>
+
+        <h2>Delicious & Fresh</h2>
+
+        <p>
+            Something delicious for every mood.
+        </p>
+
+    </div>
+
+
+    <!-- COFFEE -->
+
+    <div class="menu-category">
+
+        <h3 class="category-title">
+            ☕ Coffee & Beverages
+        </h3>
+
+        <div class="menu-grid">
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <span class="badge">Popular</span>
+
+                    <img
+                    src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
+                    alt="Cappuccino">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Cappuccino</h3>
+                        <span class="price">₹120</span>
+                    </div>
+
+                    <p>
+                        Rich espresso with steamed milk and creamy foam.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Cappuccino"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85"
+                    alt="Hot Coffee">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Classic Coffee</h3>
+                        <span class="price">₹90</span>
+                    </div>
+
+                    <p>
+                        Freshly brewed coffee with a smooth and rich taste.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Classic%20Coffee"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <span class="badge">Favorite</span>
+
+                    <img
+                    src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=900&q=85"
+                    alt="Cold Coffee">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Cold Coffee</h3>
+                        <span class="price">₹140</span>
+                    </div>
+
+                    <p>
+                        Chilled creamy coffee served cold and refreshing.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Cold%20Coffee"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SNACKS -->
+
+    <div class="menu-category">
+
+        <h3 class="category-title">
+            🍔 Snacks
+        </h3>
+
+        <div class="menu-grid">
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <span class="badge">Popular</span>
+
+                    <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+                    alt="Veg Burger">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Veg Burger</h3>
+                        <span class="price">₹160</span>
+                    </div>
+
+                    <p>
+                        Crispy veg patty, fresh vegetables and special sauce.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Veg%20Burger"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85"
+                    alt="Veg Pizza">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Veg Pizza</h3>
+                        <span class="price">₹220</span>
+                    </div>
+
+                    <p>
+                        Cheesy pizza loaded with fresh vegetables.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Veg%20Pizza"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85"
+                    alt="Samosa">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Samosa</h3>
+                        <span class="price">₹60</span>
+                    </div>
+
+                    <p>
+                        Crispy golden samosas served with chutney.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Samosa"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN COURSE -->
+
+    <div class="menu-category">
+
+        <h3 class="category-title">
+            🍝 Main Course
+        </h3>
+
+        <div class="menu-grid">
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=85"
+                    alt="Pasta">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>White Sauce Pasta</h3>
+                        <span class="price">₹190</span>
+                    </div>
+
+                    <p>
+                        Creamy pasta prepared with herbs and vegetables.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20White%20Sauce%20Pasta"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=85"
+                    alt="Fried Rice">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Veg Fried Rice</h3>
+                        <span class="price">₹170</span>
+                    </div>
+
+                    <p>
+                        Flavorful fried rice with fresh vegetables.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Veg%20Fried%20Rice"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=900&q=85"
+                    alt="Noodles">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Veg Noodles</h3>
+                        <span class="price">₹160</span>
+                    </div>
+
+                    <p>
+                        Hot noodles tossed with fresh vegetables.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Veg%20Noodles"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DESSERTS -->
+
+    <div class="menu-category">
+
+        <h3 class="category-title">
+            🍰 Desserts
+        </h3>
+
+        <div class="menu-grid">
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <span class="badge">Sweet</span>
+
+                    <img
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+                    alt="Chocolate Cake">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Chocolate Cake</h3>
+                        <span class="price">₹130</span>
+                    </div>
+
+                    <p>
+                        Soft, moist and delicious chocolate cake.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Chocolate%20Cake"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+                    alt="Donut">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Chocolate Donut</h3>
+                        <span class="price">₹80</span>
+                    </div>
+
+                    <p>
+                        Soft donut covered with delicious chocolate.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Chocolate%20Donut"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=85"
+                    alt="Ice Cream">
+
+                </div>
+
+                <div class="menu-info">
+
+                    <div class="menu-top">
+                        <h3>Ice Cream</h3>
+                        <span class="price">₹100</span>
+                    </div>
+
+                    <p>
+                        Cold and creamy ice cream in your favorite flavor.
+                    </p>
+
+                    <a
+                    href="https://wa.me/919876543210?text=I%20want%20to%20order%20Ice%20Cream"
+                    class="order-btn">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section class="section about" id="about">
+
+    <div class="about-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
+        alt="Swami Cafe">
+
+    </div>
+
+
+    <div class="about-content">
+
+        <small>ABOUT SWAMI CAFE</small>
+
+        <h2>A Place Made For Good Moments</h2>
+
+        <p>
+            Welcome to Swami Cafe — your friendly neighborhood cafe
+            for delicious food, freshly prepared coffee and sweet treats.
+        </p>
+
+        <p>
+            Whether you're meeting friends, enjoying a quick snack,
+            or simply relaxing with a cup of coffee, Swami Cafe
+            is the perfect place for you.
+        </p>
+
+
+        <div class="features">
+
+            <div class="feature">
+                ☕ <strong>Fresh Coffee</strong>
+            </div>
+
+            <div class="feature">
+                🍔 <strong>Fresh Food</strong>
+            </div>
+
+            <div class="feature">
+                ❤️ <strong>Made With Love</strong>
+            </div>
+
+            <div class="feature">
+                😊 <strong>Friendly Service</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section class="section" id="contact">
+
+    <div class="section-title">
+
+        <small>Visit Us</small>
+
+        <h2>Come Say Hello</h2>
+
+        <p>
+            We'd love to serve you!
+        </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+
+        <div class="contact-card">
+
+            <div class="icon">📍</div>
+
+            <h3>Location</h3>
+
+            <p>
+                Your City, India
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">📞</div>
+
+            <h3>Call Us</h3>
+
+            <a href="tel:+919876543210">
+                +91 98765 43210
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">💬</div>
+
+            <h3>WhatsApp</h3>
+
+            <a href="https://wa.me/919876543210">
+                Chat With Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        ☕ Swami<span>Cafe</span>
+    </div>
+
+    <p>
+        Fresh Food • Great Coffee • Happy Moments
+    </p>
+
+    <p>
+        © 2026 Swami Cafe. All Rights Reserved.
+    </p>
+
+    <div class="social">
+        📷 &nbsp; 📘 &nbsp; 💬
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     FLOATING WHATSAPP
+========================== -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/919876543210?text=Hello%20Swami%20Cafe%2C%20I%20would%20like%20to%20place%20an%20order."
+    target="_blank"
+    title="Order on WhatsApp">
+
+    💬
+
+</a>
+
+
+</body>
+</html>
+
